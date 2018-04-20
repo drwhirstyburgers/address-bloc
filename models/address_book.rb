@@ -1,4 +1,5 @@
 require_relative 'entry'
+require_relative '../controllers/menu_controller'
 
 class AddressBook
   attr_reader :entries
@@ -28,5 +29,4 @@ class AddressBook
     end
     entries.delete_at(index)
   end
-
- end
+end
