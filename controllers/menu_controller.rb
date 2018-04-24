@@ -78,6 +78,16 @@ require_relative '../models/address_book'
    end
 
    def search_entries
+     print "Search by name: "
+     name = gets.chomp
+     match - address_book.binary_search(name)
+     system "clear"
+     if match
+       puts match.to_s
+       search_submenu(match)
+     else
+       puts "No match found for #{name}"
+     end
    end
 
    def read_csv
@@ -145,7 +155,10 @@ require_relative '../models/address_book'
      case selection
        when "n"
        when "d"
+         delete_entry
        when "e"
+         edit_entry
+         entry_submenu
        when "m"
          system "clear"
          main_menu
