@@ -15,6 +15,7 @@ require_relative '../models/address_book'
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
      puts "6 - View Entry Number n"
+     puts "7 - NUKE"
      print "Enter your selection: "
 
      selection = gets.to_i
@@ -42,6 +43,10 @@ require_relative '../models/address_book'
        when 6
          system "clear"
          view_entry
+         main_menu
+       when 7
+         system "clear"
+         nuke_entries
          main_menu
        else
          system "clear"
@@ -142,6 +147,17 @@ require_relative '../models/address_book'
 
      puts "Updated entry:"
      puts entry
+   end
+
+   def nuke_entries
+     print "Nuke the address book? (y/n)"
+     selection = gets.chomp
+
+     if selection == "y"
+       address_book.entries.clear
+     else
+       puts "You are a merciful lord"
+     end
    end
 
    def entry_submenu(entry)
